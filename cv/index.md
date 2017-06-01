@@ -3,7 +3,7 @@ layout: default
 title: Tristan's CV
 ---
 
-{% include bracket-link.md text="Download PDF" url="http://localhost:4000/assets/Swedish_CV_2016Aug_Tristan.pdf" %}{:style="float: right;margin-right: 7px;margin-top: 7px;"}
+{% include bracket-link.md text="Download PDF" url="https://tswedish.github.io/assets/Swedish_CV_2016Aug_Tristan.pdf" %}{:style="float: right;margin-right: 7px;margin-top: 7px;"}
 # Curriculum Vitae
 
 In addition to this info, please check out my [projects]({{site.url}}/projects/) on this site.
