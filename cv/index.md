@@ -5,13 +5,13 @@ title: Tristan's CV
 
 {% include bracket-link.md text="Download PDF" exturl="" url="/assets/CV_Swedish_2017.pdf" %}# Curriculum Vitae
 
-In addition to this info, please check out my [projects]({{site.url}}/projects/) on this site.
+In addition to this info, please check out my [projects]({{site.url}}/projects/) and [blog]({{site.url}}/blog/).
 
 {% include bracket-link.md text="LinkedIn" exturl="https://www.linkedin.com" url="/in/tristan-swedish-4963659a/" %}## Education
 
-> MIT, Student, *PhD*, MIT Media Lab, Ramesh Raskar's Group - **2017-Present**
+> MIT, Student, *PhD*, MIT Media Lab, Camera Culture Group (Prof. Ramesh Raskar) - **2017-Present**
 
-> MIT, *Masters in Media Arts and Sciences*, MIT Media Lab - **2014-2017**
+> MIT, *Masters in Media Arts and Sciences*, MIT Media Lab, Camera Culture Group (Prof. Ramesh Raskar) - **2014-2017**
 
 > Northeastern University, *Bachelor of Science in Electrical Engineering* - Electrical Engineering and Physics - **2009-2014**
 

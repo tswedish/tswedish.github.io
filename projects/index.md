@@ -7,22 +7,22 @@ title: Tristan's Projects
 
 ## Machine Learning and Artificial Intelligence
 
->
-{% include project-stub.md  
+>{% include bracket-link.md text="demo" exturl= "https://theia.media.mit.edu" url="/" %} {% include bracket-link.md text="website" exturl="http://openeye.io" url="/" %} {% include bracket-link.md text="github" exturl="https://github.com" url="/OpenEye-Dev" %}
+>### OpenDR: Open Source Diabetic Retinopathy Screening
 
-title="OpenDR: Open Source Diabetic Retinopathy Screening"
+>{% include project-stub.md  
 
-description="As part of my Master's thesis work, I created an organization dedicated to making AI to improve eye health. We built an open source API for Diabetic Retinopathy Grading, using the latest in deep learning and scalable web technologies to deliver an open platform that can automatically grade fundus images for DR severity."
+title="OpenDR" 
+
+description="As part of my Master's thesis work, I created an organization dedicated to making AI to improve eye health. We built an open source API for Diabetic Retinopathy Grading, using the latest in deep learning and scalable web technologies to deliver an open platform that can automatically grade fundus images for DR severity." 
 
 img="opendr.jpg"
 %}
 
 >
-{% include bracket-link.md text="demo" url="https://theia.media.mit.edu/" %} {% include bracket-link.md text="website" url="http://openeye.io/" %} {% include bracket-link.md text="github" url="https://github.com/OpenEye-Dev" %}
 
-> ---
-
->
+>{% include bracket-link.md text="github" exturl="https://github.com" url="/tswedish/deepvizjs" %}
+>### Visual Debugger for Memory Networks
 {% include project-stub.md  
 
 title="Visual Debugger for Memory Networks"
@@ -33,12 +33,14 @@ img="deepvizjs.jpg"
 %}
 
 >
-{% include bracket-link.md text="github" url="https://github.com/tswedish/deepvizjs" %}
+
+> ---
 
 ## Imaging Systems and Sensors
 
->
-{% include project-stub.md  
+>{% include bracket-link.md text="website" exturl="http://eyeselfie.org" url="/" %} {% include bracket-link.md text="pdf" exturl="" url="/projects/download/eyeSelfie2015swedish.pdf" %}
+>### eyeSelfie: Self Directed Eye Alignment Using Reciprocal Eye Box Imaging
+>{% include project-stub.md  
 
 title="eyeSelfie: Self Directed Eye Alignment Using Reciprocal Eye Box Imaging"
 
@@ -48,26 +50,27 @@ img="eyeselfie.jpg"
 %}
 
 >
-{% include bracket-link.md text="website" url="http://eyeselfie.org" %} {% include bracket-link.md text="pdf" url="http://web.media.mit.edu/~tswedish/projects/download/eyeSelfie2015swedish.pdf" %}
 
-> ---
-
->
-{% include project-stub.md  
+>{% include bracket-link.md text="github" exturl="https://github.com" url="/sdrendall/scoobi" %}
+>### SCOOBI: Speckle COntrast Optical Blood-flow Imaging
+>{% include project-stub.md  
 
 title="SCOOBI: Speckle COntrast Optical Blood-flow Imaging"
 
-description="Low cost hardware enable video rate visualization of skin surface blood perfusion and arterial blood-flow. A laser pointer, smart phone, and processing code is all that's required."
+description="Low cost hardware enable video rate visualization of skin surface blood perfusion and arterial blood-flow. A laser pointer, smart phone, and processing code is all that's required in order to see perfusion caused by blood movement beneath the skin."
 
 img="scoobi.jpg"
 %}
 
+
 >
-{% include bracket-link.md text="github" url="https://github.com/sdrendall/scoobi" %}
+
+> ---
 
 ## Educational
 
->
+>{% include bracket-link.md text="website" exturl="https://slerp.github.io" url="/slerp-base/" %} {% include bracket-link.md text="github" exturl="https://github.com" url="/SLERP/slerp-base" %}
+>### SLERP: Solution Liquidation Entropic Rotating Powder
 {% include project-stub.md  
 
 title="SLERP: Solution Liquidation Entropic Rotating Powder"
@@ -77,12 +80,14 @@ description="SLERP is an experimental project for the freshman Engineering Desig
 img="slerp.jpg"
 %}
 
-> {% include bracket-link.md text="website" url="https://slerp.github.io/slerp-base/" %} {% include bracket-link.md text="github" url="https://github.com/SLERP/slerp-base" %}
+
+> ---
 
 ## Fun Stuff
 
->
-{% include project-stub.md  
+>{% include bracket-link.md text="github" url="https://github.com/tswedish/IOIOheli" %} {% include bracket-link.md text="youtube" url="https://www.youtube.com/watch?v=o9gieXz0PMc" %}
+>### DroidCopter
+>{% include project-stub.md  
 
 title="DroidCopter"
 
@@ -91,13 +96,8 @@ description="An Android application combines sensor information and control inpu
 img="droidcopter.jpg"
 %}
 
->
-{% include bracket-link.md text="github" url="https://github.com/tswedish/IOIOheli" %} {% include bracket-link.md text="youtube" url="https://www.youtube.com/watch?v=o9gieXz0PMc" %}
-
-> ---
-
->
-{% include project-stub.md  
+>### Domobi: Domestic Mobility for Cacti
+>{% include project-stub.md  
 
 title="Domobi: Domestic Mobility for Cacti"
 
@@ -106,25 +106,23 @@ title="Domobi: Domestic Mobility for Cacti"
 img="domobi.jpg"
 %}
 
-> ---
 
->
-{% include project-stub.md  
+>{% include bracket-link.md text="github" url="https://github.com/Domobi/phonograph" %}
+>### Phonograph
+>{% include project-stub.md  
 
 title="Phonograph"
 
-description="Nonlinear music composition and playback. Compositions are probabilistic programs defined as a graph over possible transition states."
+description="Nonlinear music composition and playback. Compositions are graphical models, enumerating possible transition states so every play is a different experience. Compose in blocks and connect the pieces together generating potentially infinite permutations of your composition!"
 
 img="phonograph.jpg"
 %}
 
->
-{% include bracket-link.md text="github" url="https://github.com/Domobi/phonograph" %}
 
-> ---
 
->
-{% include project-stub.md  
+>{% include bracket-link.md text="youtube" url="https://www.youtube.com/watch?v=T51TfsRlrTc" %}
+>### Bad Particle
+>{% include project-stub.md  
 
 title="Bad Particle"
 
@@ -133,5 +131,3 @@ description="'It's been one hundred years since the last communication from supe
 img="badparticle.jpg"
 %}
 
->
-{% include bracket-link.md text="youtube" url="https://www.youtube.com/watch?v=T51TfsRlrTc" %}
