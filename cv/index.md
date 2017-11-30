@@ -3,26 +3,27 @@ layout: default
 title: Tristan's CV
 ---
 
-{% include bracket-link.md text="Download PDF" url="https://tswedish.github.io/assets/Swedish_CV_2016Aug_Tristan.pdf" %}{:style="float: right;margin-right: 7px;margin-top: 7px;"}
-# Curriculum Vitae
+{% include bracket-link.md text="Download PDF" exturl="" url="/assets/CV_Swedish_2017.pdf" %}# Curriculum Vitae
 
 In addition to this info, please check out my [projects]({{site.url}}/projects/) on this site.
 
-{% include bracket-link.md text="LinkedIn" url="https://www.linkedin.com/in/tristan-swedish-4963659a/" %}{:style="float: right;margin-right: 7px;margin-top: 7px;"}
-## Education
+{% include bracket-link.md text="LinkedIn" exturl="https://www.linkedin.com" url="/in/tristan-swedish-4963659a/" %}## Education
 
 > MIT, Student, *PhD*, MIT Media Lab, Ramesh Raskar's Group - **2017-Present**
 
-> MIT, *Master of Media Arts and Sciences*, MIT Media Lab - **2014-2017**
+> MIT, *Masters in Media Arts and Sciences*, MIT Media Lab - **2014-2017**
 
 > Northeastern University, *Bachelor of Science in Electrical Engineering* - Electrical Engineering and Physics - **2009-2014**
 
 ---
 
-{% include bracket-link.md text="Google Scholar" url="https://scholar.google.com/citations?user=dCXZ5A8AAAAJ&hl=en" %}{:style="float: right;margin-right: 7px;margin-top: 7px;"}
-## Select Publications
+{% include bracket-link.md text="Google Scholar" exturl="https://scholar.google.com" url="/citations?user=dCXZ5A8AAAAJ&hl=en" %}## Select Publications
 
 ### Journals:
+
+> G. Leifman, D. Rudoy, **T. Swedish**, E. Bayro-Corrochano, R. Raskar. *Learning Gaze Transitions From
+Depth to Improve Video Saliency Estimation* The IEEE International Conference on Computer Vision
+(ICCV), pp. 1698–1707, 2017.
 
 > Karin Roesch, **Tristan Swedish** and Ramesh Raskar. *Automated retinal imaging and trend analysis*. Clinical Ophthalmology. Vol. 11, 2017.
 
