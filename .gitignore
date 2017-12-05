@@ -1,3 +1,4 @@
 _site/
+*.swp
 .DS_STORE
 public_html.bkp/
