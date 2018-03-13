@@ -11,5 +11,5 @@
 cp -R ../public_html/ ../public_html.bkp/
 
 # Now we will copy everything to the public_html folder
-
+rm _site/install_site.sh
 cp -R _site/ ../public_html/
