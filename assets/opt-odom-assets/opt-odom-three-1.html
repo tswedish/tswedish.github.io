@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - cameras</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #808080;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				background-color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 5px;
+				z-index: 100;
+			}
+			a {
+				color: #0080ff;
+			}
+			b { color: lightgreen }
+		</style>
+	</head>
+	<body>
+
+		<script src="http://threejs.org/build/three.min.js"></script>
+		<script src="OrbitControls.js"></script>
+
+		<script>
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+var controls = new THREE.OrbitControls( camera );
+
+var captureAspectRatio = 640/480;
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );	
+
+var cam1 = new THREE.PerspectiveCamera( 55, captureAspectRatio, 0.1, 1 );
+scene.add(cam1);
+var helper1 = new THREE.CameraHelper( cam1 );
+scene.add( helper1 );
+
+var cam2 = new THREE.PerspectiveCamera( 55, captureAspectRatio, 0.1, 1 );
+scene.add(cam2);
+cam2.rotateOnAxis(new THREE.Vector3(0,1,0),0.1);
+cam2.position.set(0,0,-1.5);
+var helper2 = new THREE.CameraHelper( cam2 );
+scene.add( helper2 );
+
+var geometry1 = new THREE.PlaneBufferGeometry(captureAspectRatio, 1, 640, 480 );
+var cam1Texture = THREE.ImageUtils.loadTexture('opt-odom-three-1-textures/1000.png');
+cam1Texture.minFilter = THREE.LinearFilter
+var material1 = new THREE.MeshBasicMaterial({ map: cam1Texture });
+var plane1 = new THREE.Mesh( geometry1, material1 );
+plane1.position.z = -1;
+cam1.add( plane1 );
+
+var geometry2 = new THREE.PlaneBufferGeometry(captureAspectRatio, 1, 640, 480 );
+var cam2Texture = THREE.ImageUtils.loadTexture('opt-odom-three-1-textures/1050.png');
+cam2Texture.minFilter = THREE.LinearFilter
+var material2 = new THREE.MeshBasicMaterial({ map: cam2Texture });
+var plane2 = new THREE.Mesh( geometry2, material2 );
+plane2.position.z = -1;
+cam2.add( plane2 );
+
+camera.position.set( 1.8, 1.0, -0.2);
+console.log(cam2);
+controls.update();
+camera.lookAt(cam2.position);
+
+
+function animate() {
+	requestAnimationFrame( animate );
+	
+	//console.log(camera.position)
+	
+	renderer.render( scene, camera );
+}
+animate();
+		</script>
+
+	</body>
+</html>

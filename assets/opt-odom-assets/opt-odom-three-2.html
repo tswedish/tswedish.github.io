@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - cameras</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #808080;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				background-color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 5px;
+				z-index: 100;
+			}
+			a {
+				color: #0080ff;
+			}
+			b { color: lightgreen }
+		</style>
+	</head>
+	<body>
+
+		<script src="http://threejs.org/build/three.min.js"></script>
+		<script src="OrbitControls.js"></script>
+
+
+<script id="vs" type="x-shader/x-vertex">
+			uniform sampler2D map;
+			uniform float width;
+			uniform float height;
+			uniform float nearClipping, farClipping;
+			uniform float pointSize;
+			uniform float zOffset;
+			varying vec2 vUv;
+			varying vec3 vNormal;
+			varying vec3 vPos;
+			const float XtoZ = 1.388; // 640/(230.51 * 2)
+			const float YtoZ = 1.041; // 480/
+			void main() {
+				vUv =  uv;			
+				vPos = (modelMatrix * vec4(position, 1.0)).xyz;
+				vNormal = normalMatrix * normal;
+				vec4 color = texture2D( map, uv );
+				float depth = ( color.r + color.g + color.b ) / (3.0);
+				// Projection code by @kcmic
+				float z = (depth)*30.0;
+				vec4 pos = vec4(
+					(position.x) * z * XtoZ,
+					(position.y - 0.25) * z * YtoZ,
+					- z + zOffset,
+					1.0);
+				//gl_PointSize = pointSize;
+				gl_Position = projectionMatrix * modelViewMatrix * pos;
+			}
+		</script>
+
+		<script id="fs" type="x-shader/x-fragment">
+			uniform sampler2D mapRGB;
+			varying vec2 vUv;
+			varying vec3 vNormal;
+			varying vec3 vPos;
+			void main() {
+				vec4 color = texture2D( mapRGB, vUv );
+				vec3 colorMixer = mix(color.rgb, vec3(color.a), 0.0);
+				gl_FragColor = vec4( colorMixer, 1.0 );
+			}
+		</script>
+
+		<script>
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
+
+var controls = new THREE.OrbitControls( camera );
+
+var captureAspectRatio = 640/480;
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );	
+
+var cam1 = new THREE.PerspectiveCamera( 55, captureAspectRatio, 0.1, 1 );
+scene.add(cam1);
+var helper1 = new THREE.CameraHelper( cam1 );
+scene.add( helper1 );
+
+var cam2 = new THREE.PerspectiveCamera( 55, captureAspectRatio, 0.1, 1 );
+scene.add(cam2);
+cam2.rotateOnAxis(new THREE.Vector3(0,1,0),-0.1);
+cam2.position.set(0,0,-1.5);
+var helper2 = new THREE.CameraHelper( cam2 );
+scene.add( helper2 );
+
+
+var geometry1 = new THREE.PlaneBufferGeometry(captureAspectRatio, 1, 640, 480 );
+var cam1Texture = THREE.ImageUtils.loadTexture('opt-odom-three-1-textures/1000.png');
+cam1Texture.minFilter = THREE.LinearFilter;
+cam1Texture.format = THREE.RGBFormat;
+var material1 = new THREE.MeshBasicMaterial({ map: cam1Texture });
+var plane1 = new THREE.Mesh( geometry1, material1 );
+plane1.position.z = -1;
+cam1.add( plane1 );
+
+var geometry2 = new THREE.PlaneBufferGeometry(captureAspectRatio, 1, 640, 480 );
+var cam2Texture = THREE.ImageUtils.loadTexture('opt-odom-three-1-textures/1050.png');
+cam2Texture.minFilter = THREE.LinearFilter
+var material2 = new THREE.MeshBasicMaterial({ map: cam2Texture });
+var plane2 = new THREE.Mesh( geometry2, material2 );
+plane2.position.z = -1;
+cam2.add( plane2 );
+
+camera.position.set( 1.8, 1.0, -0.2);
+console.log(cam2);
+controls.update();
+camera.lookAt(cam2.position);
+
+
+depthtexture1 = THREE.ImageUtils.loadTexture('opt-odom-three-1-textures/1000-depth.png');
+depthtexture1.minFilter = THREE.NearestFilter;
+depthtexture1.format = THREE.RGBFormat;
+var width = 640, height = 480;
+var nearClipping = 850, farClipping = 4000;
+geometry1 = new THREE.PlaneBufferGeometry(captureAspectRatio,1,640,480);
+/*
+geometry1 = new THREE.BufferGeometry();
+var vertices = new Float32Array( width * height * 3 );
+for ( var i = 0, j = 0, l = vertices.length; i < l; i += 3, j ++ ) {
+	vertices[ i ] = j % width;
+	vertices[ i + 1 ] = Math.floor( j / width );
+}
+geometry1.addAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+*/
+material1 = new THREE.ShaderMaterial( {
+	uniforms: {
+		"map":          { value: depthtexture1 },
+		"mapRGB":	{ value: cam1Texture },
+		"width":        { value: width },
+		"height":       { value: height },
+		"nearClipping": { value: nearClipping },
+		"farClipping":  { value: farClipping },
+		"pointSize":    { value: 2 },
+		"zOffset":      { value: 0 }
+		},
+	vertexShader: document.getElementById( 'vs' ).textContent,
+	fragmentShader: document.getElementById( 'fs' ).textContent,
+	//blending: THREE.AdditiveBlending,
+	//depthTest: false, depthWrite: false,
+	transparent: true
+} );
+mesh1 = new THREE.Mesh( geometry1, material1 );
+cam1.add( mesh1 );
+
+/*
+depthtexture2 = THREE.ImageUtils.loadTexture('opt-odom-three-1-textures/1050-depth.png');
+depthtexture2.minFilter = THREE.NearestFilter;
+depthtexture2.format = THREE.RGBFormat;
+var width = 640, height = 480;
+var nearClipping = 850, farClipping = 4000;
+geometry2 = new THREE.BufferGeometry();
+var vertices = new Float32Array( width * height * 3 );
+for ( var i = 0, j = 0, l = vertices.length; i < l; i += 3, j ++ ) {
+	vertices[ i ] = j % width;
+	vertices[ i + 1 ] = Math.floor( j / width );
+}
+geometry2.addAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+material2 = new THREE.ShaderMaterial( {
+	uniforms: {
+		"map":          { value: depthtexture2 },
+		"mapRGB":	{ value: cam2Texture },
+		"width":        { value: width },
+		"height":       { value: height },
+		"nearClipping": { value: nearClipping },
+		"farClipping":  { value: farClipping },
+		"pointSize":    { value: 2 },
+		"zOffset":      { value: 0 }
+		},
+	vertexShader: document.getElementById( 'vs' ).textContent,
+	fragmentShader: document.getElementById( 'fs' ).textContent,
+	blending: THREE.AdditiveBlending,
+	depthTest: false, depthWrite: false,
+	transparent: true
+} );
+mesh2 = new THREE.Mesh( geometry2, material2 );
+cam2.add( mesh2 );
+
+*/
+
+function animate() {
+	requestAnimationFrame( animate );
+	
+	//console.log(camera.position)
+	
+	renderer.render( scene, camera );
+}
+animate();
+		</script>
+
+	</body>
+</html>
