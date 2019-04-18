@@ -3,7 +3,7 @@ layout: default
 title: Tristan's CV
 ---
 
-{% include bracket-link.md text="Download PDF" exturl="" url="/assets/CV_Swedish_2017.pdf" %}# Curriculum Vitae
+{% include bracket-link.md text="Download PDF" exturl="" url="/assets/CV_Swedish_2019.pdf" %}# Curriculum Vitae
 
 In addition to this info, please check out my [projects]({{site.url}}/projects/) and [blog]({{site.url}}/blog/).
 
@@ -19,7 +19,7 @@ In addition to this info, please check out my [projects]({{site.url}}/projects/)
 
 {% include bracket-link.md text="Google Scholar" exturl="https://scholar.google.com" url="/citations?user=dCXZ5A8AAAAJ&hl=en" %}## Select Publications
 
-### Journals:
+### Journals and Peer Reviewed Conferences:
 
 > G. Leifman, D. Rudoy, **T. Swedish**, E. Bayro-Corrochano, R. Raskar. *Learning Gaze Transitions From
 Depth to Improve Video Saliency Estimation* The IEEE International Conference on Computer Vision
@@ -32,6 +32,10 @@ Depth to Improve Video Saliency Estimation* The IEEE International Conference on
 > Gouldstone, A.; Caner, N.; **Swedish, T.B.**; Kalkhoran, S.M.; DiMarzio, C.A. . *Mechanical and Optical Dynamic Model of Lung*. Biomedical Engineering, IEEE Transactions on , vol.58, no.10, pp.3012,3015, Oct. 2011
 
 ### Conference Papers:
+
+> **T. Swedish** and R. Raskar. *Deep Visual Teach and Repeat on Path Networks*. CVPR Workshop on Visual Odometry and Location Based Cues, 2018.
+
+> M. Tancik, **T. Swedish**, G. Satat, R. Raskar. *Data-Driven Non-Line-of-Sight Imaging With A Traditional Camera*. COSI, 2018.
 
 > G. Satat, B. Heshmat, **T. Swedish**, and R. Raskar, "*Computational Laser Speckle Contrast Imaging in Endoscopic System*," OSA 3D IAD. July 2016.
 
